@@ -12,26 +12,27 @@
         <commentGenerator>
             <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="true"/>
         </commentGenerator>
 
 <!-- 数据库路径 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/vhr?characterEncoding=utf-8" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/bpm2?characterEncoding=utf-8" userId="root"
                         password="ppet1205"/>
 
 <!-- 源码存放路径 -->
-        <javaModelGenerator targetPackage="ctas.test.entity"
+        <javaModelGenerator targetPackage="com.wz.bpm.bean"
                             targetProject="/Users/gongzhihao/wz-bpm-new2/mybatis-generator/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="ctas.test.entity.xml"
+        <sqlMapGenerator targetPackage="com.wz.bpm.mapper"
                          targetProject="/Users/gongzhihao/wz-bpm-new2/mybatis-generator/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="ctas.test.mapper"
+        <javaClientGenerator targetPackage="com.wz.bpm.mapper"
                              targetProject="/Users/gongzhihao/wz-bpm-new2/mybatis-generator/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
@@ -49,6 +50,126 @@
             <!--<columnRenamingRule searchString="^D_"
                                 replaceString=""/>-->
         </table>
+        
+         <table tableName="employee_education" domainObjectName="EmployeeEducation"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                                replaceString=""/>-->
+        </table>
+        
+        <table tableName="employee_work" domainObjectName="EmployeeWork"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                                replaceString=""/>-->
+        </table>
+        
+  
+        
+        <table tableName="employee_contract" domainObjectName="EmployeeContract"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                                replaceString=""/>-->
+        </table>
+        
+        <table tableName="employee_salary" domainObjectName="EmployeeSalary"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!--<columnRenamingRule searchString="^D_"
+                                replaceString=""/>-->
+        </table>
+        
+        <table tableName="user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+         <table tableName="menu" domainObjectName="Menu"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+         <table tableName="role" domainObjectName="Role"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+         <table tableName="role_menu" domainObjectName="RoleMenu"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        
+        <table tableName="menu_oper" domainObjectName="MenuOper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+         <table tableName="role_menu_oper" domainObjectName="RoleMenuOper"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="role_user" domainObjectName="RoleUser"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="customer" domainObjectName="Customer"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="industry" domainObjectName="Industry"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="region" domainObjectName="Region"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="customer_contact" domainObjectName="CustomerContact"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        <table tableName="customer_followup_record" domainObjectName="CustomerFollowupRecord"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+           
+        </table>
+        
+        
 
     </context>
 </generatorConfiguration>

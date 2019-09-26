@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wz.bpm.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.wz.bpm.bean.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_num" jdbcType="VARCHAR" property="customerNum" />
+    <result column="company_fullname" jdbcType="VARCHAR" property="companyFullname" />
+    <result column="company_shortname" jdbcType="VARCHAR" property="companyShortname" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="industry_first" jdbcType="INTEGER" property="industryFirst" />
+    <result column="industry_second" jdbcType="INTEGER" property="industrySecond" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="customer_from" jdbcType="BIT" property="customerFrom" />
+    <result column="self_website_url" jdbcType="VARCHAR" property="selfWebsiteUrl" />
+    <result column="self_website_desc" jdbcType="VARCHAR" property="selfWebsiteDesc" />
+    <result column="customer_backgroud" jdbcType="VARCHAR" property="customerBackgroud" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="company_website" jdbcType="VARCHAR" property="companyWebsite" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_postcode" jdbcType="VARCHAR" property="companyPostcode" />
+    <result column="is_self_website" jdbcType="BIT" property="isSelfWebsite" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_num, company_fullname, company_shortname, brand_name, industry_first, 
+    industry_second, region_id, address, customer_from, self_website_url, self_website_desc, 
+    customer_backgroud, creator, create_time, company_website, company_email, company_phone, 
+    company_postcode, is_self_website
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wz.bpm.bean.Customer">
+    insert into customer (id, customer_num, company_fullname, 
+      company_shortname, brand_name, industry_first, 
+      industry_second, region_id, address, 
+      customer_from, self_website_url, self_website_desc, 
+      customer_backgroud, creator, create_time, 
+      company_website, company_email, company_phone, 
+      company_postcode, is_self_website)
+    values (#{id,jdbcType=INTEGER}, #{customerNum,jdbcType=VARCHAR}, #{companyFullname,jdbcType=VARCHAR}, 
+      #{companyShortname,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{industryFirst,jdbcType=INTEGER}, 
+      #{industrySecond,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{customerFrom,jdbcType=BIT}, #{selfWebsiteUrl,jdbcType=VARCHAR}, #{selfWebsiteDesc,jdbcType=VARCHAR}, 
+      #{customerBackgroud,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
+      #{companyWebsite,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{companyPostcode,jdbcType=VARCHAR}, #{isSelfWebsite,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wz.bpm.bean.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerNum != null">
+        customer_num,
+      </if>
+      <if test="companyFullname != null">
+        company_fullname,
+      </if>
+      <if test="companyShortname != null">
+        company_shortname,
+      </if>
+      <if test="brandName != null">
+        brand_name,
+      </if>
+      <if test="industryFirst != null">
+        industry_first,
+      </if>
+      <if test="industrySecond != null">
+        industry_second,
+      </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="customerFrom != null">
+        customer_from,
+      </if>
+      <if test="selfWebsiteUrl != null">
+        self_website_url,
+      </if>
+      <if test="selfWebsiteDesc != null">
+        self_website_desc,
+      </if>
+      <if test="customerBackgroud != null">
+        customer_backgroud,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="companyWebsite != null">
+        company_website,
+      </if>
+      <if test="companyEmail != null">
+        company_email,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="companyPostcode != null">
+        company_postcode,
+      </if>
+      <if test="isSelfWebsite != null">
+        is_self_website,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerNum != null">
+        #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFullname != null">
+        #{companyFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyShortname != null">
+        #{companyShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryFirst != null">
+        #{industryFirst,jdbcType=INTEGER},
+      </if>
+      <if test="industrySecond != null">
+        #{industrySecond,jdbcType=INTEGER},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFrom != null">
+        #{customerFrom,jdbcType=BIT},
+      </if>
+      <if test="selfWebsiteUrl != null">
+        #{selfWebsiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="selfWebsiteDesc != null">
+        #{selfWebsiteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBackgroud != null">
+        #{customerBackgroud,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null">
+        #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPostcode != null">
+        #{companyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelfWebsite != null">
+        #{isSelfWebsite,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wz.bpm.bean.Customer">
+    update customer
+    <set>
+      <if test="customerNum != null">
+        customer_num = #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFullname != null">
+        company_fullname = #{companyFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyShortname != null">
+        company_shortname = #{companyShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryFirst != null">
+        industry_first = #{industryFirst,jdbcType=INTEGER},
+      </if>
+      <if test="industrySecond != null">
+        industry_second = #{industrySecond,jdbcType=INTEGER},
+      </if>
+      <if test="regionId != null">
+        region_id = #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFrom != null">
+        customer_from = #{customerFrom,jdbcType=BIT},
+      </if>
+      <if test="selfWebsiteUrl != null">
+        self_website_url = #{selfWebsiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="selfWebsiteDesc != null">
+        self_website_desc = #{selfWebsiteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBackgroud != null">
+        customer_backgroud = #{customerBackgroud,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null">
+        company_website = #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPostcode != null">
+        company_postcode = #{companyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelfWebsite != null">
+        is_self_website = #{isSelfWebsite,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wz.bpm.bean.Customer">
+    update customer
+    set customer_num = #{customerNum,jdbcType=VARCHAR},
+      company_fullname = #{companyFullname,jdbcType=VARCHAR},
+      company_shortname = #{companyShortname,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      industry_first = #{industryFirst,jdbcType=INTEGER},
+      industry_second = #{industrySecond,jdbcType=INTEGER},
+      region_id = #{regionId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      customer_from = #{customerFrom,jdbcType=BIT},
+      self_website_url = #{selfWebsiteUrl,jdbcType=VARCHAR},
+      self_website_desc = #{selfWebsiteDesc,jdbcType=VARCHAR},
+      customer_backgroud = #{customerBackgroud,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      company_website = #{companyWebsite,jdbcType=VARCHAR},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_postcode = #{companyPostcode,jdbcType=VARCHAR},
+      is_self_website = #{isSelfWebsite,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wz.bpm.bean.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_num" jdbcType="VARCHAR" property="customerNum" />
+    <result column="company_fullname" jdbcType="VARCHAR" property="companyFullname" />
+    <result column="company_shortname" jdbcType="VARCHAR" property="companyShortname" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="industry_first" jdbcType="INTEGER" property="industryFirst" />
+    <result column="industry_second" jdbcType="INTEGER" property="industrySecond" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="customer_from" jdbcType="BIT" property="customerFrom" />
+    <result column="self_website_url" jdbcType="VARCHAR" property="selfWebsiteUrl" />
+    <result column="self_website_desc" jdbcType="VARCHAR" property="selfWebsiteDesc" />
+    <result column="customer_backgroud" jdbcType="VARCHAR" property="customerBackgroud" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="company_website" jdbcType="VARCHAR" property="companyWebsite" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_postcode" jdbcType="VARCHAR" property="companyPostcode" />
+    <result column="is_self_website" jdbcType="BIT" property="isSelfWebsite" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customer_num, company_fullname, company_shortname, brand_name, industry_first, 
+    industry_second, region_id, address, customer_from, self_website_url, self_website_desc, 
+    customer_backgroud, creator, create_time, company_website, company_email, company_phone, 
+    company_postcode, is_self_website
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wz.bpm.bean.Customer">
+    insert into customer (id, customer_num, company_fullname, 
+      company_shortname, brand_name, industry_first, 
+      industry_second, region_id, address, 
+      customer_from, self_website_url, self_website_desc, 
+      customer_backgroud, creator, create_time, 
+      company_website, company_email, company_phone, 
+      company_postcode, is_self_website)
+    values (#{id,jdbcType=INTEGER}, #{customerNum,jdbcType=VARCHAR}, #{companyFullname,jdbcType=VARCHAR}, 
+      #{companyShortname,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{industryFirst,jdbcType=INTEGER}, 
+      #{industrySecond,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{customerFrom,jdbcType=BIT}, #{selfWebsiteUrl,jdbcType=VARCHAR}, #{selfWebsiteDesc,jdbcType=VARCHAR}, 
+      #{customerBackgroud,jdbcType=VARCHAR}, #{creator,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
+      #{companyWebsite,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, 
+      #{companyPostcode,jdbcType=VARCHAR}, #{isSelfWebsite,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wz.bpm.bean.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customerNum != null">
+        customer_num,
+      </if>
+      <if test="companyFullname != null">
+        company_fullname,
+      </if>
+      <if test="companyShortname != null">
+        company_shortname,
+      </if>
+      <if test="brandName != null">
+        brand_name,
+      </if>
+      <if test="industryFirst != null">
+        industry_first,
+      </if>
+      <if test="industrySecond != null">
+        industry_second,
+      </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="customerFrom != null">
+        customer_from,
+      </if>
+      <if test="selfWebsiteUrl != null">
+        self_website_url,
+      </if>
+      <if test="selfWebsiteDesc != null">
+        self_website_desc,
+      </if>
+      <if test="customerBackgroud != null">
+        customer_backgroud,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="companyWebsite != null">
+        company_website,
+      </if>
+      <if test="companyEmail != null">
+        company_email,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="companyPostcode != null">
+        company_postcode,
+      </if>
+      <if test="isSelfWebsite != null">
+        is_self_website,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customerNum != null">
+        #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFullname != null">
+        #{companyFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyShortname != null">
+        #{companyShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryFirst != null">
+        #{industryFirst,jdbcType=INTEGER},
+      </if>
+      <if test="industrySecond != null">
+        #{industrySecond,jdbcType=INTEGER},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFrom != null">
+        #{customerFrom,jdbcType=BIT},
+      </if>
+      <if test="selfWebsiteUrl != null">
+        #{selfWebsiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="selfWebsiteDesc != null">
+        #{selfWebsiteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBackgroud != null">
+        #{customerBackgroud,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null">
+        #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPostcode != null">
+        #{companyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelfWebsite != null">
+        #{isSelfWebsite,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wz.bpm.bean.Customer">
+    update customer
+    <set>
+      <if test="customerNum != null">
+        customer_num = #{customerNum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFullname != null">
+        company_fullname = #{companyFullname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyShortname != null">
+        company_shortname = #{companyShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryFirst != null">
+        industry_first = #{industryFirst,jdbcType=INTEGER},
+      </if>
+      <if test="industrySecond != null">
+        industry_second = #{industrySecond,jdbcType=INTEGER},
+      </if>
+      <if test="regionId != null">
+        region_id = #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFrom != null">
+        customer_from = #{customerFrom,jdbcType=BIT},
+      </if>
+      <if test="selfWebsiteUrl != null">
+        self_website_url = #{selfWebsiteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="selfWebsiteDesc != null">
+        self_website_desc = #{selfWebsiteDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBackgroud != null">
+        customer_backgroud = #{customerBackgroud,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null">
+        company_website = #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPostcode != null">
+        company_postcode = #{companyPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isSelfWebsite != null">
+        is_self_website = #{isSelfWebsite,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wz.bpm.bean.Customer">
+    update customer
+    set customer_num = #{customerNum,jdbcType=VARCHAR},
+      company_fullname = #{companyFullname,jdbcType=VARCHAR},
+      company_shortname = #{companyShortname,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      industry_first = #{industryFirst,jdbcType=INTEGER},
+      industry_second = #{industrySecond,jdbcType=INTEGER},
+      region_id = #{regionId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      customer_from = #{customerFrom,jdbcType=BIT},
+      self_website_url = #{selfWebsiteUrl,jdbcType=VARCHAR},
+      self_website_desc = #{selfWebsiteDesc,jdbcType=VARCHAR},
+      customer_backgroud = #{customerBackgroud,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      company_website = #{companyWebsite,jdbcType=VARCHAR},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_postcode = #{companyPostcode,jdbcType=VARCHAR},
+      is_self_website = #{isSelfWebsite,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,6 +1,6 @@
-package ctas.test.mapper;
+package com.wz.bpm.mapper;
 
-import ctas.test.entity.Employee;
+import com.wz.bpm.bean.Employee;
 
 public interface EmployeeMapper {
     int deleteByPrimaryKey(Integer id);

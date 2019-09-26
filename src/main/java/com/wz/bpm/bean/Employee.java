@@ -1,4 +1,6 @@
-package ctas.test.entity;
+package com.wz.bpm.bean;
+
+import java.util.Date;
 
 public class Employee {
     private Integer id;
@@ -46,6 +48,24 @@ public class Employee {
     private String urgencyContact;
 
     private String urgencyContactTelephone;
+
+    private String positionClass;
+
+    private Integer socialSecurityCityId;
+
+    private Double socialSecurityBase;
+
+    private Date socialSecurityDate;
+
+    private Double fundBase;
+
+    private Date fundDate;
+
+    private Date contractEntryDate;
+
+    private Date contractLeaveDate;
+
+    private Date contractRegularDate;
 
     public Integer getId() {
         return id;
@@ -229,5 +249,77 @@ public class Employee {
 
     public void setUrgencyContactTelephone(String urgencyContactTelephone) {
         this.urgencyContactTelephone = urgencyContactTelephone == null ? null : urgencyContactTelephone.trim();
+    }
+
+    public String getPositionClass() {
+        return positionClass;
+    }
+
+    public void setPositionClass(String positionClass) {
+        this.positionClass = positionClass == null ? null : positionClass.trim();
+    }
+
+    public Integer getSocialSecurityCityId() {
+        return socialSecurityCityId;
+    }
+
+    public void setSocialSecurityCityId(Integer socialSecurityCityId) {
+        this.socialSecurityCityId = socialSecurityCityId;
+    }
+
+    public Double getSocialSecurityBase() {
+        return socialSecurityBase;
+    }
+
+    public void setSocialSecurityBase(Double socialSecurityBase) {
+        this.socialSecurityBase = socialSecurityBase;
+    }
+
+    public Date getSocialSecurityDate() {
+        return socialSecurityDate;
+    }
+
+    public void setSocialSecurityDate(Date socialSecurityDate) {
+        this.socialSecurityDate = socialSecurityDate;
+    }
+
+    public Double getFundBase() {
+        return fundBase;
+    }
+
+    public void setFundBase(Double fundBase) {
+        this.fundBase = fundBase;
+    }
+
+    public Date getFundDate() {
+        return fundDate;
+    }
+
+    public void setFundDate(Date fundDate) {
+        this.fundDate = fundDate;
+    }
+
+    public Date getContractEntryDate() {
+        return contractEntryDate;
+    }
+
+    public void setContractEntryDate(Date contractEntryDate) {
+        this.contractEntryDate = contractEntryDate;
+    }
+
+    public Date getContractLeaveDate() {
+        return contractLeaveDate;
+    }
+
+    public void setContractLeaveDate(Date contractLeaveDate) {
+        this.contractLeaveDate = contractLeaveDate;
+    }
+
+    public Date getContractRegularDate() {
+        return contractRegularDate;
+    }
+
+    public void setContractRegularDate(Date contractRegularDate) {
+        this.contractRegularDate = contractRegularDate;
     }
 }

@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wz.bpm.mapper.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.wz.bpm.bean.Employee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="employee_num" jdbcType="VARCHAR" property="employeeNum" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="work_city_id" jdbcType="INTEGER" property="workCityId" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="work_status" jdbcType="BIT" property="workStatus" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="isMarry" jdbcType="BIT" property="ismarry" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="interest" jdbcType="VARCHAR" property="interest" />
+    <result column="recommended" jdbcType="VARCHAR" property="recommended" />
+    <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle" />
+    <result column="identify_card" jdbcType="VARCHAR" property="identifyCard" />
+    <result column="bank_card" jdbcType="VARCHAR" property="bankCard" />
+    <result column="open_bank" jdbcType="VARCHAR" property="openBank" />
+    <result column="comunication_addr" jdbcType="VARCHAR" property="comunicationAddr" />
+    <result column="home_addr" jdbcType="VARCHAR" property="homeAddr" />
+    <result column="urgency_contact" jdbcType="VARCHAR" property="urgencyContact" />
+    <result column="urgency_contact_telephone" jdbcType="VARCHAR" property="urgencyContactTelephone" />
+    <result column="position_class" jdbcType="VARCHAR" property="positionClass" />
+    <result column="social_security_city_id" jdbcType="INTEGER" property="socialSecurityCityId" />
+    <result column="social_security_base" jdbcType="DOUBLE" property="socialSecurityBase" />
+    <result column="social_security_date" jdbcType="DATE" property="socialSecurityDate" />
+    <result column="fund_base" jdbcType="DOUBLE" property="fundBase" />
+    <result column="fund_date" jdbcType="DATE" property="fundDate" />
+    <result column="contract_entry_date" jdbcType="DATE" property="contractEntryDate" />
+    <result column="contract_leave_date" jdbcType="DATE" property="contractLeaveDate" />
+    <result column="contract_regular_date" jdbcType="DATE" property="contractRegularDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, employee_num, name, mobile_phone, department_id, work_city_id, company_id, work_status, 
+    position_id, nation, sex, isMarry, email, interest, recommended, professional_title, 
+    identify_card, bank_card, open_bank, comunication_addr, home_addr, urgency_contact, 
+    urgency_contact_telephone, position_class, social_security_city_id, social_security_base, 
+    social_security_date, fund_base, fund_date, contract_entry_date, contract_leave_date, 
+    contract_regular_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wz.bpm.bean.Employee">
+    insert into employee (id, employee_num, name, 
+      mobile_phone, department_id, work_city_id, 
+      company_id, work_status, position_id, 
+      nation, sex, isMarry, email, 
+      interest, recommended, professional_title, 
+      identify_card, bank_card, open_bank, 
+      comunication_addr, home_addr, urgency_contact, 
+      urgency_contact_telephone, position_class, 
+      social_security_city_id, social_security_base, 
+      social_security_date, fund_base, fund_date, 
+      contract_entry_date, contract_leave_date, contract_regular_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{employeeNum,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, #{workCityId,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=INTEGER}, #{workStatus,jdbcType=BIT}, #{positionId,jdbcType=INTEGER}, 
+      #{nation,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{ismarry,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, 
+      #{interest,jdbcType=VARCHAR}, #{recommended,jdbcType=VARCHAR}, #{professionalTitle,jdbcType=VARCHAR}, 
+      #{identifyCard,jdbcType=VARCHAR}, #{bankCard,jdbcType=VARCHAR}, #{openBank,jdbcType=VARCHAR}, 
+      #{comunicationAddr,jdbcType=VARCHAR}, #{homeAddr,jdbcType=VARCHAR}, #{urgencyContact,jdbcType=VARCHAR}, 
+      #{urgencyContactTelephone,jdbcType=VARCHAR}, #{positionClass,jdbcType=VARCHAR}, 
+      #{socialSecurityCityId,jdbcType=INTEGER}, #{socialSecurityBase,jdbcType=DOUBLE}, 
+      #{socialSecurityDate,jdbcType=DATE}, #{fundBase,jdbcType=DOUBLE}, #{fundDate,jdbcType=DATE}, 
+      #{contractEntryDate,jdbcType=DATE}, #{contractLeaveDate,jdbcType=DATE}, #{contractRegularDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wz.bpm.bean.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="employeeNum != null">
+        employee_num,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="workCityId != null">
+        work_city_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="workStatus != null">
+        work_status,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="ismarry != null">
+        isMarry,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="recommended != null">
+        recommended,
+      </if>
+      <if test="professionalTitle != null">
+        professional_title,
+      </if>
+      <if test="identifyCard != null">
+        identify_card,
+      </if>
+      <if test="bankCard != null">
+        bank_card,
+      </if>
+      <if test="openBank != null">
+        open_bank,
+      </if>
+      <if test="comunicationAddr != null">
+        comunication_addr,
+      </if>
+      <if test="homeAddr != null">
+        home_addr,
+      </if>
+      <if test="urgencyContact != null">
+        urgency_contact,
+      </if>
+      <if test="urgencyContactTelephone != null">
+        urgency_contact_telephone,
+      </if>
+      <if test="positionClass != null">
+        position_class,
+      </if>
+      <if test="socialSecurityCityId != null">
+        social_security_city_id,
+      </if>
+      <if test="socialSecurityBase != null">
+        social_security_base,
+      </if>
+      <if test="socialSecurityDate != null">
+        social_security_date,
+      </if>
+      <if test="fundBase != null">
+        fund_base,
+      </if>
+      <if test="fundDate != null">
+        fund_date,
+      </if>
+      <if test="contractEntryDate != null">
+        contract_entry_date,
+      </if>
+      <if test="contractLeaveDate != null">
+        contract_leave_date,
+      </if>
+      <if test="contractRegularDate != null">
+        contract_regular_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="employeeNum != null">
+        #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="workCityId != null">
+        #{workCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        #{workStatus,jdbcType=BIT},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="ismarry != null">
+        #{ismarry,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        #{recommended,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyCard != null">
+        #{identifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="comunicationAddr != null">
+        #{comunicationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null">
+        #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContact != null">
+        #{urgencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContactTelephone != null">
+        #{urgencyContactTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="positionClass != null">
+        #{positionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityCityId != null">
+        #{socialSecurityCityId,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null">
+        #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityDate != null">
+        #{socialSecurityDate,jdbcType=DATE},
+      </if>
+      <if test="fundBase != null">
+        #{fundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="fundDate != null">
+        #{fundDate,jdbcType=DATE},
+      </if>
+      <if test="contractEntryDate != null">
+        #{contractEntryDate,jdbcType=DATE},
+      </if>
+      <if test="contractLeaveDate != null">
+        #{contractLeaveDate,jdbcType=DATE},
+      </if>
+      <if test="contractRegularDate != null">
+        #{contractRegularDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wz.bpm.bean.Employee">
+    update employee
+    <set>
+      <if test="employeeNum != null">
+        employee_num = #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="workCityId != null">
+        work_city_id = #{workCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        work_status = #{workStatus,jdbcType=BIT},
+      </if>
+      <if test="positionId != null">
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="ismarry != null">
+        isMarry = #{ismarry,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        recommended = #{recommended,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyCard != null">
+        identify_card = #{identifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        open_bank = #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="comunicationAddr != null">
+        comunication_addr = #{comunicationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null">
+        home_addr = #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContact != null">
+        urgency_contact = #{urgencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContactTelephone != null">
+        urgency_contact_telephone = #{urgencyContactTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="positionClass != null">
+        position_class = #{positionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityCityId != null">
+        social_security_city_id = #{socialSecurityCityId,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null">
+        social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityDate != null">
+        social_security_date = #{socialSecurityDate,jdbcType=DATE},
+      </if>
+      <if test="fundBase != null">
+        fund_base = #{fundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="fundDate != null">
+        fund_date = #{fundDate,jdbcType=DATE},
+      </if>
+      <if test="contractEntryDate != null">
+        contract_entry_date = #{contractEntryDate,jdbcType=DATE},
+      </if>
+      <if test="contractLeaveDate != null">
+        contract_leave_date = #{contractLeaveDate,jdbcType=DATE},
+      </if>
+      <if test="contractRegularDate != null">
+        contract_regular_date = #{contractRegularDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wz.bpm.bean.Employee">
+    update employee
+    set employee_num = #{employeeNum,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      work_city_id = #{workCityId,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=INTEGER},
+      work_status = #{workStatus,jdbcType=BIT},
+      position_id = #{positionId,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      isMarry = #{ismarry,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=VARCHAR},
+      recommended = #{recommended,jdbcType=VARCHAR},
+      professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      identify_card = #{identifyCard,jdbcType=VARCHAR},
+      bank_card = #{bankCard,jdbcType=VARCHAR},
+      open_bank = #{openBank,jdbcType=VARCHAR},
+      comunication_addr = #{comunicationAddr,jdbcType=VARCHAR},
+      home_addr = #{homeAddr,jdbcType=VARCHAR},
+      urgency_contact = #{urgencyContact,jdbcType=VARCHAR},
+      urgency_contact_telephone = #{urgencyContactTelephone,jdbcType=VARCHAR},
+      position_class = #{positionClass,jdbcType=VARCHAR},
+      social_security_city_id = #{socialSecurityCityId,jdbcType=INTEGER},
+      social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      social_security_date = #{socialSecurityDate,jdbcType=DATE},
+      fund_base = #{fundBase,jdbcType=DOUBLE},
+      fund_date = #{fundDate,jdbcType=DATE},
+      contract_entry_date = #{contractEntryDate,jdbcType=DATE},
+      contract_leave_date = #{contractLeaveDate,jdbcType=DATE},
+      contract_regular_date = #{contractRegularDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wz.bpm.bean.Employee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="employee_num" jdbcType="VARCHAR" property="employeeNum" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="work_city_id" jdbcType="INTEGER" property="workCityId" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="work_status" jdbcType="BIT" property="workStatus" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="isMarry" jdbcType="BIT" property="ismarry" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="interest" jdbcType="VARCHAR" property="interest" />
+    <result column="recommended" jdbcType="VARCHAR" property="recommended" />
+    <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle" />
+    <result column="identify_card" jdbcType="VARCHAR" property="identifyCard" />
+    <result column="bank_card" jdbcType="VARCHAR" property="bankCard" />
+    <result column="open_bank" jdbcType="VARCHAR" property="openBank" />
+    <result column="comunication_addr" jdbcType="VARCHAR" property="comunicationAddr" />
+    <result column="home_addr" jdbcType="VARCHAR" property="homeAddr" />
+    <result column="urgency_contact" jdbcType="VARCHAR" property="urgencyContact" />
+    <result column="urgency_contact_telephone" jdbcType="VARCHAR" property="urgencyContactTelephone" />
+    <result column="position_class" jdbcType="VARCHAR" property="positionClass" />
+    <result column="social_security_city_id" jdbcType="INTEGER" property="socialSecurityCityId" />
+    <result column="social_security_base" jdbcType="DOUBLE" property="socialSecurityBase" />
+    <result column="social_security_date" jdbcType="DATE" property="socialSecurityDate" />
+    <result column="fund_base" jdbcType="DOUBLE" property="fundBase" />
+    <result column="fund_date" jdbcType="DATE" property="fundDate" />
+    <result column="contract_entry_date" jdbcType="DATE" property="contractEntryDate" />
+    <result column="contract_leave_date" jdbcType="DATE" property="contractLeaveDate" />
+    <result column="contract_regular_date" jdbcType="DATE" property="contractRegularDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, employee_num, name, mobile_phone, department_id, work_city_id, company_id, work_status, 
+    position_id, nation, sex, isMarry, email, interest, recommended, professional_title, 
+    identify_card, bank_card, open_bank, comunication_addr, home_addr, urgency_contact, 
+    urgency_contact_telephone, position_class, social_security_city_id, social_security_base, 
+    social_security_date, fund_base, fund_date, contract_entry_date, contract_leave_date, 
+    contract_regular_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wz.bpm.bean.Employee">
+    insert into employee (id, employee_num, name, 
+      mobile_phone, department_id, work_city_id, 
+      company_id, work_status, position_id, 
+      nation, sex, isMarry, email, 
+      interest, recommended, professional_title, 
+      identify_card, bank_card, open_bank, 
+      comunication_addr, home_addr, urgency_contact, 
+      urgency_contact_telephone, position_class, 
+      social_security_city_id, social_security_base, 
+      social_security_date, fund_base, fund_date, 
+      contract_entry_date, contract_leave_date, contract_regular_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{employeeNum,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, #{workCityId,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=INTEGER}, #{workStatus,jdbcType=BIT}, #{positionId,jdbcType=INTEGER}, 
+      #{nation,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{ismarry,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, 
+      #{interest,jdbcType=VARCHAR}, #{recommended,jdbcType=VARCHAR}, #{professionalTitle,jdbcType=VARCHAR}, 
+      #{identifyCard,jdbcType=VARCHAR}, #{bankCard,jdbcType=VARCHAR}, #{openBank,jdbcType=VARCHAR}, 
+      #{comunicationAddr,jdbcType=VARCHAR}, #{homeAddr,jdbcType=VARCHAR}, #{urgencyContact,jdbcType=VARCHAR}, 
+      #{urgencyContactTelephone,jdbcType=VARCHAR}, #{positionClass,jdbcType=VARCHAR}, 
+      #{socialSecurityCityId,jdbcType=INTEGER}, #{socialSecurityBase,jdbcType=DOUBLE}, 
+      #{socialSecurityDate,jdbcType=DATE}, #{fundBase,jdbcType=DOUBLE}, #{fundDate,jdbcType=DATE}, 
+      #{contractEntryDate,jdbcType=DATE}, #{contractLeaveDate,jdbcType=DATE}, #{contractRegularDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wz.bpm.bean.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="employeeNum != null">
+        employee_num,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="workCityId != null">
+        work_city_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="workStatus != null">
+        work_status,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="ismarry != null">
+        isMarry,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="interest != null">
+        interest,
+      </if>
+      <if test="recommended != null">
+        recommended,
+      </if>
+      <if test="professionalTitle != null">
+        professional_title,
+      </if>
+      <if test="identifyCard != null">
+        identify_card,
+      </if>
+      <if test="bankCard != null">
+        bank_card,
+      </if>
+      <if test="openBank != null">
+        open_bank,
+      </if>
+      <if test="comunicationAddr != null">
+        comunication_addr,
+      </if>
+      <if test="homeAddr != null">
+        home_addr,
+      </if>
+      <if test="urgencyContact != null">
+        urgency_contact,
+      </if>
+      <if test="urgencyContactTelephone != null">
+        urgency_contact_telephone,
+      </if>
+      <if test="positionClass != null">
+        position_class,
+      </if>
+      <if test="socialSecurityCityId != null">
+        social_security_city_id,
+      </if>
+      <if test="socialSecurityBase != null">
+        social_security_base,
+      </if>
+      <if test="socialSecurityDate != null">
+        social_security_date,
+      </if>
+      <if test="fundBase != null">
+        fund_base,
+      </if>
+      <if test="fundDate != null">
+        fund_date,
+      </if>
+      <if test="contractEntryDate != null">
+        contract_entry_date,
+      </if>
+      <if test="contractLeaveDate != null">
+        contract_leave_date,
+      </if>
+      <if test="contractRegularDate != null">
+        contract_regular_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="employeeNum != null">
+        #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="workCityId != null">
+        #{workCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        #{workStatus,jdbcType=BIT},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="ismarry != null">
+        #{ismarry,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        #{recommended,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyCard != null">
+        #{identifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="comunicationAddr != null">
+        #{comunicationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null">
+        #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContact != null">
+        #{urgencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContactTelephone != null">
+        #{urgencyContactTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="positionClass != null">
+        #{positionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityCityId != null">
+        #{socialSecurityCityId,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null">
+        #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityDate != null">
+        #{socialSecurityDate,jdbcType=DATE},
+      </if>
+      <if test="fundBase != null">
+        #{fundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="fundDate != null">
+        #{fundDate,jdbcType=DATE},
+      </if>
+      <if test="contractEntryDate != null">
+        #{contractEntryDate,jdbcType=DATE},
+      </if>
+      <if test="contractLeaveDate != null">
+        #{contractLeaveDate,jdbcType=DATE},
+      </if>
+      <if test="contractRegularDate != null">
+        #{contractRegularDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wz.bpm.bean.Employee">
+    update employee
+    <set>
+      <if test="employeeNum != null">
+        employee_num = #{employeeNum,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="workCityId != null">
+        work_city_id = #{workCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="workStatus != null">
+        work_status = #{workStatus,jdbcType=BIT},
+      </if>
+      <if test="positionId != null">
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="ismarry != null">
+        isMarry = #{ismarry,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null">
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        recommended = #{recommended,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTitle != null">
+        professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyCard != null">
+        identify_card = #{identifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="openBank != null">
+        open_bank = #{openBank,jdbcType=VARCHAR},
+      </if>
+      <if test="comunicationAddr != null">
+        comunication_addr = #{comunicationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="homeAddr != null">
+        home_addr = #{homeAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContact != null">
+        urgency_contact = #{urgencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyContactTelephone != null">
+        urgency_contact_telephone = #{urgencyContactTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="positionClass != null">
+        position_class = #{positionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="socialSecurityCityId != null">
+        social_security_city_id = #{socialSecurityCityId,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null">
+        social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityDate != null">
+        social_security_date = #{socialSecurityDate,jdbcType=DATE},
+      </if>
+      <if test="fundBase != null">
+        fund_base = #{fundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="fundDate != null">
+        fund_date = #{fundDate,jdbcType=DATE},
+      </if>
+      <if test="contractEntryDate != null">
+        contract_entry_date = #{contractEntryDate,jdbcType=DATE},
+      </if>
+      <if test="contractLeaveDate != null">
+        contract_leave_date = #{contractLeaveDate,jdbcType=DATE},
+      </if>
+      <if test="contractRegularDate != null">
+        contract_regular_date = #{contractRegularDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wz.bpm.bean.Employee">
+    update employee
+    set employee_num = #{employeeNum,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      work_city_id = #{workCityId,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=INTEGER},
+      work_status = #{workStatus,jdbcType=BIT},
+      position_id = #{positionId,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      isMarry = #{ismarry,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=VARCHAR},
+      recommended = #{recommended,jdbcType=VARCHAR},
+      professional_title = #{professionalTitle,jdbcType=VARCHAR},
+      identify_card = #{identifyCard,jdbcType=VARCHAR},
+      bank_card = #{bankCard,jdbcType=VARCHAR},
+      open_bank = #{openBank,jdbcType=VARCHAR},
+      comunication_addr = #{comunicationAddr,jdbcType=VARCHAR},
+      home_addr = #{homeAddr,jdbcType=VARCHAR},
+      urgency_contact = #{urgencyContact,jdbcType=VARCHAR},
+      urgency_contact_telephone = #{urgencyContactTelephone,jdbcType=VARCHAR},
+      position_class = #{positionClass,jdbcType=VARCHAR},
+      social_security_city_id = #{socialSecurityCityId,jdbcType=INTEGER},
+      social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      social_security_date = #{socialSecurityDate,jdbcType=DATE},
+      fund_base = #{fundBase,jdbcType=DOUBLE},
+      fund_date = #{fundDate,jdbcType=DATE},
+      contract_entry_date = #{contractEntryDate,jdbcType=DATE},
+      contract_leave_date = #{contractLeaveDate,jdbcType=DATE},
+      contract_regular_date = #{contractRegularDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
